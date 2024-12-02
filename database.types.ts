@@ -13,22 +13,19 @@ export type Database = {
     Tables: {
       bot_documents: {
         Row: {
-          bot_id: number | null
+          bot_id: number
           created_at: string
-          document_id: number | null
-          id: number
+          document_id: number
         }
         Insert: {
-          bot_id?: number | null
+          bot_id: number
           created_at?: string
-          document_id?: number | null
-          id?: number
+          document_id: number
         }
         Update: {
-          bot_id?: number | null
+          bot_id?: number
           created_at?: string
-          document_id?: number | null
-          id?: number
+          document_id?: number
         }
         Relationships: [
           {
@@ -207,4 +204,4 @@ export type CompositeTypes<
   : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
     ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
-Done in 2.44s.
+Done in 1.45s.
