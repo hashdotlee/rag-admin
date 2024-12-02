@@ -11,7 +11,7 @@ import { Save, UploadCloud } from "lucide-react";
 export default async function BotSetting({
   params,
 }: {
-  params: { botId: string };
+  params: Promise<{ botId: string }>;
 }) {
   const { botId } = await params;
   if (!botId) {
@@ -36,7 +36,12 @@ export default async function BotSetting({
         </div>
       </div>
       <FormItem label="API Key">
-        <Input name="api_key" disabled defaultValue={bot?.api_key || ""} type="text" />
+        <Input
+          name="api_key"
+          disabled
+          defaultValue={bot?.api_key || ""}
+          type="text"
+        />
       </FormItem>
       <FormItem label="Name">
         <Input name="name" defaultValue={bot?.name || ""} type="text" />
@@ -51,18 +56,18 @@ export default async function BotSetting({
           <div className="grid gap-4 md:grid-cols-4 grid-cols-2">
             {documents.map((document) => (
               <div
-                key={document.id}
+                key={document?.id}
                 className="p-4 space-y-4 rounded-md bg-gray-50 border shadow-sm"
               >
                 <div className="p-2 text-xs text-white bg-slate-700 rounded-md inline-block">
-                  {document.type === 0 && <span>PDF</span>}
-                  {document.type === 1 && <span>Web Data</span>}
-                  {document.type === 2 && <span>Plain Text</span>}
+                  {document?.type === 0 && <span>PDF</span>}
+                  {document?.type === 1 && <span>Web Data</span>}
+                  {document?.type === 2 && <span>Plain Text</span>}
                 </div>
                 <FormItem label="url">
                   <Input
                     name="url"
-                    defaultValue={document.url || ""}
+                    defaultValue={document?.url || ""}
                     type="text"
                     disabled
                   />
@@ -70,14 +75,14 @@ export default async function BotSetting({
                 <FormItem label="Content">
                   <Textarea
                     rows={5}
-                    defaultValue={document.content || ""}
+                    defaultValue={document?.content || ""}
                     disabled
                   />
                 </FormItem>
                 <FormItem label="Selector">
                   <Input
                     name="selector"
-                    defaultValue={document.selector || ""}
+                    defaultValue={document?.selector || ""}
                     disabled
                   />
                 </FormItem>
