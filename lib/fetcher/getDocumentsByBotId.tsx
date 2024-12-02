@@ -2,16 +2,17 @@ import { supabase } from "../supabase";
 
 export const getDocumentsByBotId = async (botId: string) => {
   const { data, error } = await supabase
-    .from("documents")
+    .from("bot_documents")
     .select(
       `
-		*,
-	    bots (id, name)
+	    documents (*)
 	`,
     )
-    .eq("bots.id", botId);
+    .eq("bot_id", botId);
+
   if (error) {
     throw error;
   }
-  return data;
+
+  return data.map((doc) => doc.documents);
 };
