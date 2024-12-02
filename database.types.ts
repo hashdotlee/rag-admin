@@ -46,18 +46,21 @@ export type Database = {
       }
       bots: {
         Row: {
+          api_key: string | null
           created_at: string
           id: number
           name: string | null
           prompt: string | null
         }
         Insert: {
+          api_key?: string | null
           created_at?: string
           id?: number
           name?: string | null
           prompt?: string | null
         }
         Update: {
+          api_key?: string | null
           created_at?: string
           id?: number
           name?: string | null
@@ -204,4 +207,4 @@ export type CompositeTypes<
   : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
     ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
-Done in 1.51s.
+Done in 1.47s.
